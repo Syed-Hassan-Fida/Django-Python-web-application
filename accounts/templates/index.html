@@ -1,0 +1,12 @@
+{% extends 'base.html' %}{% load static from static %} {% load widget_tweaks %} {% block content %}
+
+<h1>Welcome</h1>
+
+{% if user.is_authenticated %}
+<a href="{% url 'accounts:logout' %}">Logout</a> <br>
+{% else %}
+<a href="{% url 'accounts:register' %}">Register</a> <br>
+<a href="{% url 'accounts:login' %}">Login</a> 
+{% endif %}
+
+{% endblock content %}

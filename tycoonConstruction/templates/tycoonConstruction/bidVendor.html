@@ -1,0 +1,46 @@
+{% extends 'base.html' %}{% load static from static %} {% block content %}
+
+     
+     
+        <div class="container">
+            <h1>Please Enter the Following Fields To Hire Vendor</h1>
+            <hr>
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div class="mb-3">
+                  <label for="first_name">First Name</label>
+                  <input type="text" class="form-control" id="first_name" name="first_name" value="" Required>
+                </div>
+                <div class="mb-3">
+                    <label for="last_name">Last Name</label>
+                    <input type="text" class="form-control" id="last_name" name="last_name" value="" Required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="mobile_no">Contact Number</label>
+                    <input type="text" class="form-control" id="mobile_no" name="mobile_no" value="" Required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="email">Email</label>
+                    <input type="text" class="form-control" id="email" name="email" value="" Required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="project_address">Project Address</label>
+                    <input type="text" class="form-control" id="project_address" name="project_address" value="" Required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="Description">Project Description</label>
+                    <textarea rows="3" style="font-size: 2vw; width:100%;" class="form-control" id="Description" name="desc" Required></textarea>
+                  </div>
+                  <div class="mb-3">
+                    <label for="projectbudget">Project Budget</label>
+                    <input type="text" class="form-control" id="projectbudget" name="projectbudget" value="" Required>
+                  </div>
+                  <div class="mb-3">
+                    <label for="meeting_date">Meeting Date</label>
+                    <input type="Date" class="form-control" id="meeting_date" name="meeting_date" value="" Required>
+                  </div>
+                <button type="submit" class="btn btn-primary my-3">Submit</button>
+              </form>
+          </div>
+    
+{% endblock content %}

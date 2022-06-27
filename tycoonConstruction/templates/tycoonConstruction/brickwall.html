@@ -1,0 +1,100 @@
+{% extends 'base.html' %}{% load static from static %} {% load widget_tweaks %} {% block content %}
+
+<div class="m-5 pt-50 pb-30">
+    <h3>Cost Estimation</h3>
+        <section class="py-80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 mx-auto">
+                        <div class="card">
+                            <div class="card-header text-black"><strong>Wall Construction</strong></div>
+                                <div class="card-body">
+                                    
+                                    <form action="" method="POST">
+                                        {% csrf_token %}
+                                        {% for field in form.visible_fields %}
+                                        <div class="form-group">
+                                                {{ field.label_tag }}
+                                                {% render_field field class="form-control" %}
+                                                    {% for error in field.errors %}
+                                                        <span style="color:red">{{ error }}</span>
+                                                    {% endfor %}
+                                            {% endfor %}
+                                        <br>
+                                        {% comment %} {{ form }} {% endcomment %}
+                                            <input type="submit" name="submit" value="submit">
+                                        </div>    
+                                    </form>  
+                                </div>
+                                <hr>
+                                <br>
+                                {%if bool == True %}
+                                <h5>Calculated Value</h5>
+                                    {% if submitbutton == "submit" %} 
+                                        
+                                        <span>Total Meter Wall is <bold style="font-weight: bold;">{{ total_meter_wall }}</bold> meter cube (m^3)</span>
+                                        </p>
+                                        <p style="color: red;">This is the Price of Materials without deduction of wall</p>
+                                        <p style="color: red;">Deduction Include (Windows, doors, ventilation etc)</p>
+                                        <h5>Brick Wall Estimation & Price </h5>
+                                        <div class="table-responsive">          
+                                            <table class="table table-bordered table-hover">
+                                                <thead>
+                                                <tr>
+                                                    <th>#</th>
+                                                    <th>Material</th>
+                                                    <th>Amount Used</th>
+                                                    <th>Price</th>
+                                                    
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>Brick</td>
+                                                    <td>{{ brick_used }} Quantity</td>
+                                                    <td>{{ total_POB }} Rs</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>Cement</td>
+                                                    <td>{{ cement_used }} Bags</td>
+                                                    <td>{{ cement_price }} Rs</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td>Sand</td>
+                                                    <td>{{ sand_used }} (m^3)</td>
+                                                    <td>{{ sand_price }} Rs</td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                    <td>4</td>
+                                                    <td colspan="2">Total Price for <bold style="font-weight: bold;">{{ total_meter_wall }}</bold> meter cube (m^3) wall </td>
+                                                    <td>{{total_price}} Rs </td>
+                                                    
+                                                    
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                            </div>
+                                    {% endif %}
+                                {% endif %}  
+                                {% if submitbutton == "submit" %} 
+                                    <a href="{% url 'tycoonConstruction:costEstimation' %}" class="btn btn-primary">Back</a>
+                                    <a href="{% url 'tycoonConstruction:walldeduction' %}" class="btn btn-primary">Wall Deduction</a>
+                                {% else %}
+                                    <a href="{% url 'tycoonConstruction:brickwall' %}" class="btn btn-primary">Brick Wall</a>           
+                                {% endif %}
+                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <br>
+
+
+
+{% endblock content %}

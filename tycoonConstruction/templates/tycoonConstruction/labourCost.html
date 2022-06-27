@@ -1,0 +1,62 @@
+{% extends 'base.html' %}{% load static from static %} {% load widget_tweaks %} {% block content %}
+
+<div class="m-5 pt-50 pb-30">
+    <h3>Cost Estimation</h3>
+        <section class="py-80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 mx-auto">
+                        <div class="card">
+                            <div class="card-header text-black"><strong>Labour Cost</strong></div>
+                                <div class="card-body">
+                                    <form action="" method="POST">
+                                        {% csrf_token %}
+                                        {% for field in form.visible_fields %}
+                                        <div class="form-group">
+                                                {{ field.label_tag }}
+                                                {% render_field field class="form-control" %}
+                                                    {% for error in field.errors %}
+                                                        <span style="color:red">{{ error }}</span>
+                                                    {% endfor %}
+                                            {% endfor %}
+                                        <br>
+                                        
+                                            <input type="submit" name="submit" value="submit">
+                                        </div>    
+                                    </form>   
+                                </div>
+                                <hr>
+                                <br>
+                                <h5>Calculated Value</h5>
+                                {% if submitbutton == "submit" %} 
+                                    <p> length {{ length }} m^3</p>
+                                    <p> width {{ width }} m^3</p>
+                                    <p> total_area_sqft {{ total_area_sqft }} sqft</p>
+                                    <p style="color: red;"> {{ total_person }} Persons are required to complete the {{ total_area_sqft }} sqft task...
+                                        <br>
+                                        in {{ no_days }} days 
+                                    </p>
+                                    <h5>Cost of Labour </h5>
+                                    <p>Total Price of Labour Cost : {{ labour_cost }} Rs <p style="color: red;">Contract Base </p></p>
+                                    
+
+                                {% endif %}
+
+                                {% if submitbutton == "submit" %} 
+                                    <a href="{% url 'tycoonConstruction:costEstimation' %}" class="btn btn-primary">Back</a>
+                                    <a href="{% url 'tycoonConstruction:walldeduction' %}" class="btn btn-primary">Wall Deduction</a>
+                                {% else %}
+                                    <a href="{% url 'tycoonConstruction:brickwall' %}" class="btn btn-primary">Brick Wall</a>           
+                                {% endif %} 
+                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <br>
+
+
+
+{% endblock content %}

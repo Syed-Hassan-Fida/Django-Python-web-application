@@ -1,0 +1,126 @@
+{% extends 'base.html' %}{% load static from static %} {% block content %}
+
+<div class="m-6 pt-100 pb-120">
+    <h1>Cost Estimation</h1>
+    <div> 
+        <div class="service-area pt-90 pb-120">
+            <div class="container">
+                <div class="col">
+                    <div class="col-lg-12">
+                        <div class="swiper-container service-slider-2 swiper-arrow with-bg_white">
+                            <div class="swiper-wrapper">
+                                {% comment %} First Service {% endcomment %}
+                                <div class="swiper-slide">
+                                    <div class="service-item">
+                                        <div class="service-img">
+                                            <a href="{% url 'tycoonConstruction:brickwall' %}">
+                                                <img src="{% static 'tycoonConstruction/assets/images/service/medium-size/bricks.jpg' %}" alt="Service Image">
+                                            </a>
+                                            <div class="add-action text-white">
+                                                <h2 class="title mb-0"><a href="{% url 'tycoonConstruction:brickwall' %}">Brick Wall</a>
+                                                </h2>
+                                                
+                                                    <a class="text-uppercase" href="{% url 'tycoonConstruction:brickwall' %}" data-toggle="tooltip" data-placement="right" title="Click Me">Calculate
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                                                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                                            </svg> 
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                
+                                    {% comment %} Second Service {% endcomment %}
+                                    <div class="swiper-slide">
+                                        <div class="service-item">
+                                            <div class="service-img">
+                                                <a href="{% url 'tycoonConstruction:walldeduction' %}">
+                                                    <img src="{% static 'tycoonConstruction/assets/images/service/medium-size/deduction.jpg' %}" alt="Service Image">
+                                                </a>
+                                                <div class="add-action text-white">
+                                                    <h2 class="title mb-0"><a href="{% url 'tycoonConstruction:walldeduction' %}">Wall Deduction</a>
+                                                    </h2>
+                                                    
+                                                        <a class="text-uppercase" href="{% url 'tycoonConstruction:walldeduction' %}" data-toggle="tooltip" data-placement="right" title="Click Me">Calculate
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                                                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                                                </svg> 
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    
+                                    {% comment %} 3rd Service {% endcomment %}
+                                    <div class="swiper-slide">
+                                        <div class="service-item">
+                                            <div class="service-img">
+                                                <a href="{% url 'tycoonConstruction:labourcost' %}">
+                                                    <img src="{% static 'tycoonConstruction/assets/images/service/medium-size/labour.jpg' %}" alt="Service Image">
+                                                </a>
+                                                <div class="add-action text-white">
+                                                    <h2 class="title mb-0"><a href="{% url 'tycoonConstruction:labourcost' %}">Labour Cost</a>
+                                                    </h2>
+                                                    
+                                                        <a class="text-uppercase" href="{% url 'tycoonConstruction:labourcost' %}" data-toggle="tooltip" data-placement="right" title="Click Me">Calculate
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                                                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                                                </svg>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    
+
+                                    {% comment %} 4rth Service {% endcomment %}
+                                    <div class="swiper-slide">
+                                        <div class="service-item">
+                                            <div class="service-img">
+                                                <a href="{% url 'tycoonConstruction:pillarandbeam' %}">
+                                                    <img src="{% static 'tycoonConstruction/assets/images/service/medium-size/beam.jpg' %}" alt="Service Image">
+                                                </a>
+                                                <div class="add-action text-white">
+                                                    <h2 class="title mb-0"><a href="{% url 'tycoonConstruction:pillarandbeam' %}">Pillar or Beam</a>
+                                                    </h2>
+                                                    
+                                                        <a class="text-uppercase" href="{% url 'tycoonConstruction:pillarandbeam' %}" data-toggle="tooltip" data-placement="right" title="Click Me">Calculate
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                                                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                                                </svg>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    
+                                    {% comment %} end of Service {% endcomment %}
+
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        {% comment %} <a href="{% url 'tycoonConstruction:brickwall' %}" class="btn btn-primary">Brick Wall</a>
+        <a href="{% url 'tycoonConstruction:walldeduction' %}" class="btn btn-primary">Wall Deduction</a>
+        <a href="{% url 'tycoonConstruction:labourcost' %}" class="btn btn-primary">Labour Cost</a>
+        <a href="{% url 'tycoonConstruction:pillarandbeam' %}" class="btn btn-primary">Pillar or Beam</a> {% endcomment %}
+    
+
+        {% comment %} {% for i in cost%}
+        <p>{{i.user.id}}</p>
+        <p>{{i.user.username}}</p>
+        <p>{{i.vendor_email}}</p>
+        <img src="{{i.vendor_Img.url}}" height="50" width="50">
+        {% endfor %} {% endcomment %}
+        
+    </div>
+</div>
+
+
+
+{% endblock content %}

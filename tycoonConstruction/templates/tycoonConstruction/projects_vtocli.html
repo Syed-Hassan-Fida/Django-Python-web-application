@@ -1,0 +1,222 @@
+{% extends 'base2.html' %}{% load static from static %} {% block content %}
+
+<main class="p-3">
+                    
+                        <h1 class="mt-4">
+                            {%if user.is_vendor%} <span style="color: red;">{{user.username | capfirst }} </span> {% endif %}
+                        {%if user.is_contractor%} <span style="color: red;">{{user.username | capfirst }} </span> Contractor{% endif %}
+                             Dashboard</h1>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item active">Dashboard</li>
+                        </ol>
+                        
+                        <div class="row">
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-primary text-white mb-4">
+                                    <div class="card-body">Contractor Details</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small text-white stretched-link" href="{% url 'tycoonConstruction:contractor_details' %}">View Details</a>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-warning text-white mb-4">
+                                    <div class="card-body">Vendor Details</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small text-white stretched-link" href="{% url 'tycoonConstruction:vendor_details' %}">View Details</a>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            {%if user.is_contractor%}
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-success text-white mb-4">
+                                    <div class="card-body">Vendor Requests</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small text-white stretched-link" href="{% url 'tycoonConstruction:vtoc_details' %}">View Details</a>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            {%endif%}
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-danger text-white mb-4">
+                                    <div class="card-body">Accepted Projects</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small text-white stretched-link" href="{% url 'tycoonConstruction:projects_vtocli' %}">View Details</a>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+{%for i in v_proj %}
+{%if user.id == i.projects.vendor_id%}
+{{i.id}}
+{{i.v_mesg}}
+{{i.projects_id}}
+{{i.bool}}
+{{i.projects.vendor_id}}
+{{i.projects.email}}
+<form action="vtoclient_proj_status/{{i.id}}" method="GET">
+    {% csrf_token %}
+    <input type="hidden" name="id" id="id" value="{{i.id}}">
+    <button type="submit" class="btn btn-success">Send</button>
+</form> 
+{%endif%}
+{%endfor%}
+{% comment %} {%if bool == True%}
+Project Status
+{{start_date}}
+{{end_time}}
+{{proj_status}}
+{{material_required}}
+{{endif}}
+{%endif%} {% endcomment %}
+<br>
+{% comment %} {%for i in c_proj %}
+{%if user.id == i.projects.contractor_id%}
+{{i.id}}
+{{i.v_mesg}}
+{{i.projects_id}}
+{{i.bool}}
+{{i.projects.vendor_id}}
+{{i.projects.email}}
+<br>
+{%endif%}
+{%endfor%} {% endcomment %}
+
+
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table me-1"></i>
+            Accepted Client Requests
+        </div>
+        <div class="card-body">
+            <table id="datatablesSimple">
+                <thead>
+                    <tr>
+                        <th>Project Id</th>
+                        {%for i in v_proj %}
+                        {%if user.id == i.projects.vendor_id%} 
+                        <th>Vendor Msg</th>
+                        {%endif%}
+                        {%endfor%}
+                        {%for i in c_proj %}
+                        {%if user.id == i.projects.contractor_id%} 
+                        <th>Contractor Msg</th>
+                        {%endif%}
+                        {%endfor%}
+                        <th>Project Id</th>
+                        <th>Proj Accepted</th>
+                        {% comment %} <th>Action</th> {% endcomment %}
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    {%for i in v_proj %}
+        
+                    {%if user.id == i.projects.vendor_id%}   
+                    <tr>
+                        <td>{{i.id}}</td>
+                        <td>{{i.v_mesg}}</td>
+                        <td>{{i.projects_id}}</td>
+                        <td>{{i.bool}}</td>
+                        
+                        {% comment %} <td>
+                            <form action="vtoclient_proj_status/{{i.id}}" method="GET">
+                                {% csrf_token %}
+                                <input type="hidden" name="id" id="id" value="{{i.id}}">
+                                <button type="submit" class="btn btn-success">Send</button>
+                            </form>   
+                            
+                        </td> {% endcomment %}
+                        
+                    </tr>
+                    {%endif%}
+                    
+                    {%endfor%}
+                    {% comment %} for contractor {% endcomment %}
+                    {%for i in c_proj %}
+        
+                    {%if user.id == i.projects.contractor_id%}   
+                    <tr>
+                        <td>{{i.id}}</td>
+                        <td>{{i.msg}}</td>
+                        <td>{{i.projects_id}}</td>
+                        <td>{{i.bool}}</td>
+                        
+                        {% comment %} <td>
+                            <form action="vtoclient_proj_status/{{i.id}}" method="GET">
+                                {% csrf_token %}
+                                <input type="hidden" name="id" id="id" value="{{i.id}}">
+                                <button type="submit" class="btn btn-success">Send</button>
+                            </form>   
+                            
+                        </td> {% endcomment %}
+                        
+                    </tr>
+                    {%endif%}
+                    
+                    {%endfor%}
+                </tbody>
+                <tfooter>
+                    <tr>
+                        <th>Project Id</th>
+                        {%for i in v_proj %}
+                        {%if user.id == i.projects.vendor_id%} 
+                        <th>Vendor Msg</th>
+                        {%endif%}
+                        {%endfor%}
+                        {%for i in c_proj %}
+                        {%if user.id == i.projects.contractor_id%} 
+                        <th>Contractor Msg</th>
+                        {%endif%}
+                        {%endfor%}
+                        <th>Project Id</th>
+                        <th>Proj Accepted</th>
+                        {% comment %} <th>Action</th> {% endcomment %}
+                    </tr>
+                </tfooter>
+            </table>
+        </div>
+    </div>
+
+    {%if user.is_contractor%}
+    <div class="card mb-4">
+            <div class="card-header">
+                <i class="fas fa-table me-1"></i>
+                Accepted Vendor Requests
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table">
+                    <thead>
+                        <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Msg</th>
+                        <th scope="col">Vendor Id</th>
+                        <th scope="col">Accepted</th>
+                        <th scope="col">Vendor Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {%for i in vtoc_request %}
+                        <tr>
+                        <th scope="row">{{i.id}}</th>
+                        <td>{{i.mesg}}</td>
+                        <td>{{i.vtoc_req_id}}</td>
+                        <td>{{i.bool}}</td>
+                        <td>{{i.vtoc_req.v_email}}</td>
+                        </tr>
+                        {%endfor%}
+                    </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        {%endif%}
+</main>
+
+{% endblock content %}

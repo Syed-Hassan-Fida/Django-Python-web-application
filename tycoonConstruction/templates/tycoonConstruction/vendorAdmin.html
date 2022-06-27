@@ -1,0 +1,149 @@
+{% extends 'base2.html' %}{% load static from static %} {% block content %}
+
+<main class="p-3">
+                    
+                        <h1 class="mt-4">
+                            {%if user.is_vendor%} <span style="color: red;">{{user.username | capfirst }} </span> {% endif %} Vendor Dashboard
+                             </h1>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item active">Dashboard</li>
+                        </ol>
+                        
+                        <div class="row">
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-primary text-white mb-4">
+                                    <div class="card-body">Contractor Details</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small text-white stretched-link" href="{% url 'tycoonConstruction:contractor_details' %}">View Details</a>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-warning text-white mb-4">
+                                    <div class="card-body">Vendor Details</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small text-white stretched-link" href="{% url 'tycoonConstruction:vendor_details' %}">View Details</a>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            {%if user.is_contractor%}
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-success text-white mb-4">
+                                    <div class="card-body">Vendor Requests</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small text-white stretched-link" href="{% url 'tycoonConstruction:vtoc_details' %}">View Details</a>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            {%endif%}
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-danger text-white mb-4">
+                                    <div class="card-body">Accepted Projects</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small text-white stretched-link" href="{% url 'tycoonConstruction:projects_vtocli' %}">View Details</a>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        {% comment %} <div class="row">
+                            <div class="col-xl-6">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <i class="fas fa-chart-area me-1"></i>
+                                        Area Chart Example
+                                    </div>
+                                    <div class="card-body"><canvas id="myAreaChart" width="100%" height="40"></canvas></div>
+                                </div>
+                            </div>
+                            <div class="col-xl-6">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <i class="fas fa-chart-bar me-1"></i>
+                                        Bar Chart Example
+                                    </div>
+                                    <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
+                                </div>
+                            </div>
+                        </div> {% endcomment %}
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table me-1"></i>
+                                Client Requests
+                            </div>
+                            <div class="card-body">
+                                <table id="datatablesSimple">
+                                    <thead>
+                                        <tr>
+                                            <th>Client Id</th>
+                                            <th>First Name</th>
+                                            <th>Last Name</th>
+                                            <th>mobile_no</th>
+                                            <th>email</th>
+                                            <th>project_address</th>
+                                            <th>projectbudget</th>
+                                            <th>desc</th>
+                                            <th>meeting_date</th>
+                                            <th>vendor Requested</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    
+                                    <tbody>
+                                        {% for p in proj %}
+                            
+                                        {% if p.vendor_id == user.id %}    
+                                        <tr>
+                                            <td>{{p.id}}</td>
+                                            <td>{{p.first_name}}</td>
+                                            <td>{{p.last_name}}</td>
+                                            <td>{{p.mobile_no}}</td>
+                                            <td>{{p.email}}</td>
+                                            <td>{{p.project_address}}</td>
+                                            <td>{{p.projectbudget}}</td>
+                                            <td>{{p.desc}}</td>
+                                            <td>{{p.meeting_date}}</td>
+                                            <td>{{p.vendor}}</td>
+                                            <td>
+                                                <form action="vtoclient_accept/{{p.id}}" method="GET">
+                                                    {% csrf_token %}
+                                                    <input type="hidden" name="id" id="id" value="{{p.id}}">
+                                                    <button type="submit" class="btn btn-success">Accept</button>
+                                             </form>    
+                                             <hr>
+                                                <form method="POST" action="vendorAdmin/{{p.id}}">
+                                                    {% csrf_token %}
+                                                    <input  class="btn btn-danger" style="width: 100%;"  type="submit" value="Reject">
+                                                </form>   
+                                            </td>
+                                            
+                                        </tr>
+                                        {%endif%}
+                                        
+                                        {%endfor%}
+                                    </tbody>
+                                    <tfooter>
+                                        <tr>
+                                            <th>Client Id</th>
+                                            <th>First Name</th>
+                                            <th>Last Name</th>
+                                            <th>mobile_no</th>
+                                            <th>email</th>
+                                            <th>project_address</th>
+                                            <th>projectbudget</th>
+                                            <th>desc</th>
+                                            <th>vendor Requested</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </tfooter>
+                                </table>
+                            </div>
+                        </div>
+                    
+                </main>
+
+{% endblock content %}

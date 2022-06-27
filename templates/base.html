@@ -1,0 +1,724 @@
+{% load static from static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Tycoon Construction - Top Service Provider</title>
+    <meta name="robots" content="index, follow" />
+    <meta name="description" content="Industry, Products Manufacturing Company, building companies, architecture firms, and the like can take to their advantage by using OxyBuild- Construction Bootstrap 5 Template. With this sophisticated exclusive Construction Bootstrap 5 web template, you can quickly have things in order.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'tycoonConstruction\assets\images\logo\favicon1.png'%}">
+    <link rel="icon" type="image/png" sizes="64x64" href="{% static 'tycoonConstruction\assets\images\logo\favicon1.png'%}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'tycoonConstruction\assets\images\logo\favicon1.png'%}">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- CSS
+    ============================================ -->
+
+    <!-- Vendor CSS (Contain Bootstrap, Icon Fonts) -->
+    <link rel="stylesheet" href="{% static 'tycoonConstruction/assets/css/vendor/ionicons.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'tycoonConstruction/assets/css/vendor/font-awesome.css' %}" />
+    <link rel="stylesheet" href="{% static 'tycoonConstruction/assets/css/vendor/font-awesome.min.css' %}" />
+
+    <!-- Plugin CSS (Global Plugins Files) -->
+    <link rel="stylesheet" href="{% static 'tycoonConstruction/assets/css/plugins/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'tycoonConstruction/assets/css/plugins/jquery-ui.min.css' %}">
+    <!-- Plugin CSS (Plugins Files for only this Page) -->
+    <link rel="stylesheet" href="{% static 'tycoonConstruction/assets/css/plugins/swiper-bundle.min.css' %}">
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="{% static 'tycoonConstruction/assets/css/style.css' %}">
+</head>
+
+<body>
+    <div class="main-wrapper">
+
+        <!-- Begin Main Header Area -->
+        <header class="main-header_area position-relative">
+            <div class="header-top py-6 py-lg-3" data-bg-color="#ff5e13">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="offset-xl-2 offset-lg-3 col-xl-4 col-lg-5 d-none d-lg-block">
+                            <div class="header-top-left ml-8">
+                                {% comment %} <div class="contact-number">
+                                    <img src="{% static 'tycoonConstruction/assets/images/header/icon/phone.png' %}" alt="Phone Icon">
+                                    <a href="tel://01225-265-847">01225 265 847</a>
+
+                                </div> {% endcomment %}
+                                <div class="time-schedule">
+                                    <img src="{% static 'tycoonConstruction/assets/images/header/icon/clock.png' %}" alt="Clock Icon">
+                                    {% comment %} for vendor {% endcomment %}
+                                    {%if user.is_vendor%}
+                                    <span style="color: red;"><a href="{% url 'tycoonConstruction:vendorAdmin' %}" target="_blank">Go To Vendor Admin</a></span>
+                                    {% elif  user.is_contractor %}
+                                    <span style="color: red;"><a href="{% url 'tycoonConstruction:contractorAdmin' %}" target="_blank">Go To Contractor Admin</a></span>
+                                    {% else %}
+                                    <span>Welcome To Our Site Mr/Mrs as Client</span>
+                                    {% endif%}<br>
+                                    
+                                    <span><img src="{% static 'tycoonConstruction/assets/images/header/icon/phone.png' %}" alt="Phone Icon"><a href="{% url 'accounts:contact_us' %}" >Complain</a></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 d-block d-lg-none">
+                            <div class="header-logo d-flex">
+                                <a href="index.html">
+                                    <img class="d-none d-lg-block" src="{% static 'tycoonConstruction/assets/images/logo/header_logo.png' %}" alt="Tycoon Construction">
+                                    <img class="d-block d-lg-none" src="{% static 'tycoonConstruction/assets/images/logo/header_light_logo.png' %}" alt="Tycoon Construction">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-xl-5 col-lg-4 col-sm-6">
+                            <div class="header-top-right">
+                                <ul class="hassub-item">
+                                    <li class="login-info">
+                                        <a href="{% url 'accounts:register' %}">Register </a><a href="{% url 'accounts:register' %}"><span>With Us</span></a>
+                                    </li>
+                                    <!-- <li class="minicart-wrap">
+                                        <a href="#miniCart" class="minicart-btn toolbar-btn">
+                                            <div class="minicart-count">
+                                                <img src="assets/images/header/icon/cart.png" alt="Cart Icon">
+                                                <span class="quantity">3</span>
+                                            </div>
+                                        </a>
+                                    </li> -->
+                                    <li class="search-wrap hassub d-block d-lg-none">
+                                        <a href="#" class="search-btn">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+</svg>
+                                        </a>
+                                        <ul class="hassub-body search-body">
+                                            <li>
+                                                <form class="search-form" action="#">
+                                                    <div class="form-field">
+                                                        <input class="input-field" type="search" placeholder="Search">
+                                                    </div>
+                                                    <div class="form-btn_wrap">
+                                                        <button type="submit" value="submit" id="submit" class="btn btn-secondary btn-primary-hover rounded-0" name="submit">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+</svg>
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="mobile-menu_wrap d-block d-lg-none">
+                                        <a href="#mobileMenu" class="mobile-menu_btn toolbar-btn pl-0">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+</svg>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="main-header header-sticky" data-bg-color="#00225a">
+                <div class="container">
+                    <div class="main-header_nav">
+                        <div class="row align-items-center">
+                            <div class="offset-xl-2 col-xl-10 d-none d-lg-block">
+                                <div class="main-menu text-center">
+                                    <nav class="main-nav">
+                                        <ul>
+                                            <li class="drop-holder">
+                                                <a href="{% url 'tycoonConstruction:home' %}"><span>Home</span></a>
+                                            </li>
+                                            <li>
+                                                <a href="{% url 'tycoonConstruction:costEstimation' %}"><span>Cost Estimate</span></a>
+                                            </li>
+                                            <li class="drop-holder">
+                                                <a href="{% url 'tycoonConstruction:services' %}"><span>Services</span></a>
+                                                <!-- <ul class="drop-menu"> -->
+                                                <!-- service drop down -->
+                                                <!-- <li>
+                                                        <a href="single-service.html">Single Service</a>
+                                                    </li> -->
+                                                <!-- </ul> -->
+                                            </li>
+                                            <li class="drop-holder">
+                                                <a href="{% url 'tycoonConstruction:hireContractor' %}"><span>Hire Contractor</span></a>
+                                                <!-- Project Drop Down -->
+                                                <!-- <ul class="drop-menu">
+                                                    <li>
+                                                        <a href="project-2-column.html">Project 2 Column</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="project-gallery.html">Project Gallery</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="project-slider.html">Project Slider</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="project-detail.html">Project Detail</a>
+                                                    </li>
+                                                </ul> -->
+                                            </li>
+                                            <!-- Pages Button -->
+                                            <!-- <li class="drop-holder">
+                                                <a href="#"><span>Pages</span></a>
+                                                <ul class="drop-menu">
+                                                    <li>
+                                                        <a href="our-clients.html">Our Clients</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="our-team.html">Our Team</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="our-working-process.html">Our Working Process</a>
+                                                    </li>
+                                                </ul>
+                                            </li> -->
+                                            <!-- Blog Button -->
+                                            <!-- <li class="drop-holder">
+                                                <a href="blog.html"><span>Blog</span></a>
+                                                <ul class="drop-menu">
+                                                    <li>
+                                                        <a href="blog-leftsidebar.html">Blog Left Sidebar</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="blog-rightsidebar.html">Blog Right Sidebar</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="blog-detail.html">Blog Detail</a>
+                                                    </li>
+                                                </ul>
+                                            </li> -->
+                                            <!-- Shop Button -->
+                                            <!-- <li class="drop-holder">
+                                                <a href="shop.html"><span>Shop</span></a>
+                                                <ul class="drop-menu">
+                                                    <li>
+                                                        <a href="shop-leftsidebar.html">Shop Left Sidebar</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="shop-rightsidebar.html">Shop Right Sidebar</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="product-detail.html">Product Detail</a>
+                                                    </li>
+                                                </ul>
+                                            </li> -->
+                                            <li class="separator">
+                                                <a href="{% url 'tycoonConstruction:hireVendor' %}"><span>Hire Vendor</span></a>
+                                            </li>
+                                            {% comment %} <li class="separator">
+                                                <a href="{% url 'accounts:register' %}"><span>Register</span></a>
+                                            </li> {% endcomment %}
+
+                                            <!-- LOGIN AUTH LOGIC -->
+                                            {% if user.is_authenticated and user.is_contractor or user.is_authenticated and user.is_vendor  %}
+                                            <li class="separator">
+                                                <form class="logout-link" action="{% url 'accounts:logout' %}" method="POST">
+                                                    {% csrf_token %}
+                                                    <a href="" type="submit"><span><button class="btn btn-primary">Logout</button></span></a>
+                                                </form>
+                                            </li>
+                                            {% else %}
+                                            <li class="separator">
+                                                <a href="{% url 'accounts:login' %}"><span>Login</span></a>
+                                            </li>
+                                            {% endif %}
+                                            <!-- <li class="separator">
+                                                <a href="contact.html"><span>Login</span></a>
+                                            </li> -->
+
+                                            <!-- LOGIN AUTH LOGIC END-->
+
+                                            <li class="hassub-item-wrap d-none d-lg-inline-flex">
+                                                <ul class="hassub-item">
+                                                    <li class="search-wrap hassub">
+                                                        <a href="#" class="search-btn">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                                            </svg>
+                                                        </a>
+                                                        <ul class="hassub-body search-body">
+                                                            <li>
+                                                                <form class="search-form" action="#">
+                                                                    <div class="form-field">
+                                                                        <input class="input-field" type="search" name="Search" value="Search" onblur="if(this.value==''){this.value='Search'}" onfocus="if(this.value=='Search'){this.value=''}">
+                                                                    </div>
+                                                                    <div class="form-btn_wrap">
+                                                                        <button class="btn btn-secondary btn-primary-hover rounded-0">
+                                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                                                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                                                            </svg>
+                                                                        </button>
+                                                                    </div>
+                                                                </form>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="header-logo-wrap d-none d-lg-flex">
+
+                        <div class="header-fixed-logo">
+                            <a href="index.html">
+                                <img src="{% static 'tycoonConstruction\assets\images\logo\header_logo.png' %}" alt="Tycoon Construction">
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="mobile-menu_wrapper" id="mobileMenu">
+                <div class="offcanvas-body">
+                    <div class="inner-body">
+                        <div class="offcanvas-top">
+                            <a href="#" class="button-close">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
+  <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
+</svg>
+                            </a>
+                        </div>
+                        <div class="offcanvas-menu_area">
+                            <nav class="offcanvas-navigation">
+                                <ul class="mobile-menu">
+                                    <li>
+                                        <a href="{% url 'tycoonConstruction:home' %}">
+                                            <span class="mm-text">Home</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'tycoonConstruction:costEstimation' %}">
+                                            <span class="mm-text">Cost Estimation</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'tycoonConstruction:services' %}">
+                                            <span class="mm-text">Services</span>
+                                        </a>
+                                    </li>
+                                    <li class="menu-item-has-children">
+                                        <a href="{% url 'tycoonConstruction:hireContractor' %}">
+                                            <span class="mm-text">Hire Contractor
+                                        {% comment %} <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
+</svg> {% endcomment %}
+                                    </span>
+                                        </a>
+                                        <!-- <ul class="sub-menu">
+                                            <li>
+                                                <a href="service.html">
+                                                    <span class="mm-text">Services</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="single-service.html">
+                                                    <span class="mm-text">Single Service</span>
+                                                </a>
+                                            </li>
+                                        </ul> -->
+                                    </li>
+                                    <li class="menu-item-has-children">
+                                        <a href="{% url 'tycoonConstruction:hireVendor' %}">
+                                            <span class="mm-text">Hire Vendor
+                                        {% comment %} <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
+</svg> {% endcomment %}
+                                    </span>
+                                        </a>
+                                        <!-- <ul class="sub-menu">
+                                            <li>
+                                                <a href="project.html">
+                                                    <span class="mm-text">Project Default</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="project-2-column.html">
+                                                    <span class="mm-text">Project 2 Column</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="project-gallery.html">
+                                                    <span class="mm-text">Project Gallery</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="project-slider.html">
+                                                    <span class="mm-text">Project Slider</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="project-detail.html">
+                                                    <span class="mm-text">Project Detail</span>
+                                                </a>
+                                            </li>
+                                        </ul> -->
+                                    </li>
+                                    <!-- <li class="menu-item-has-children">
+                                        <a href="#">
+                                            <span class="mm-text">Pages
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
+</svg>
+                                    </span>
+                                        </a> -->
+                                    <!-- <ul class="sub-menu">
+                                            <li>
+                                                <a href="our-clients.html">
+                                                    <span class="mm-text">Our Clients</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="our-team.html">
+                                                    <span class="mm-text">Our Team</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="our-working-process.html">
+                                                    <span class="mm-text">Our Working Process</span>
+                                                </a>
+                                            </li>
+                                        </ul> -->
+                                    <!-- </li> -->
+                                    {% comment %} <li class="menu-item-has-children">
+                                        <a href="#">
+                                            <span class="mm-text">Create Bid
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
+</svg>
+                                    </span>
+                                        </a>
+                                        <ul class="sub-menu">
+                                            <li>
+                                                <a href="blog.html">
+                                                    <span class="mm-text">Blog Default</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="blog-leftsidebar.html">
+                                                    <span class="mm-text">Blog Left Sidebar</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="blog-rightsidebar.html">
+                                                    <span class="mm-text">Blog Right Sidebar</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="blog-detail.html">
+                                                    <span class="mm-text">Blog Detail</span>
+                                                </a>
+                                            </li>
+                                        </ul> 
+                                    </li>
+                                    <li class="menu-item-has-children">
+                                        <a href="#">
+                                            <span class="mm-text">Register
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
+</svg>
+                                    </span>
+                                        </a>
+                                         <ul class="sub-menu">
+                                            <li>
+                                                <a href="shop.html">
+                                                    <span class="mm-text">Shop Default</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="shop-leftsidebar.html">
+                                                    <span class="mm-text">Shop Left Sidebar</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="shop-rightsidebar.html">
+                                                    <span class="mm-text">Shop Right Sidebar</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="product-detail.html">
+                                                    <span class="mm-text">Product Detail</span>
+                                                </a>
+                                            </li>
+                                        </ul> 
+                                    </li> {% endcomment %}
+                                    
+                                        <!-- LOGIN AUTH LOGIC MOBILE -->
+                                            {% if user.is_authenticated and user.is_contractor or user.is_authenticated and user.is_vendor  %}
+                                            <li class="mm-text">
+                                                <form class="logout-link" action="{% url 'accounts:logout' %}" method="POST">
+                                                    {% csrf_token %}
+                                                    <a href="" type="submit"><span><button class="btn btn-primary">Logout</button></span></a>
+                                                </form>
+                                            </li>
+                                            {% else %}
+                                            <li class="mm-text">
+                                                <a href="{% url 'accounts:login' %}"><span>Login</span></a>
+                                            </li>
+                                            {% endif %}
+                                    {% comment %} <li>
+                                        <a href="contact.html">
+                                            <span class="mm-text">Login</span>
+                                        </a>
+                                    </li> {% endcomment %}
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="offcanvas-minicart_wrapper" id="miniCart">
+                <div class="offcanvas-body">
+                    <div class="minicart-content">
+                        <div class="minicart-heading">
+                            <h4 class="mb-0">Shopping Cart</h4>
+                            <a href="#" class="button-close">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
+  <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
+</svg>
+                            </a>
+                        </div>
+                        <ul class="minicart-list">
+                            <li class="minicart-product">
+                                <a class="product-item_remove" href="#">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
+  <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
+</svg>
+                                </a>
+                                <div class="product-item_img">
+                                    <img class="img-full" src="{% static 'assets/images/product/small-size/1-1-100x103.jpg' %}" alt="Product Image">
+                                </div>
+                                <div class="product-item_content">
+                                    <a class="product-item_title" href="shop.html">Cutting Pliers</a>
+                                    <span class="product-item_quantity">1 x $80.00</span>
+                                </div>
+                            </li>
+                            <li class="minicart-product">
+                                <a class="product-item_remove" href="#">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
+  <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
+</svg>
+                                </a>
+                                <div class="product-item_img">
+                                    <img class="img-full" src="{% static 'assets/images/product/small-size/1-2-100x103.jpg' %}" alt="Product Image">
+                                </div>
+                                <div class="product-item_content">
+                                    <a class="product-item_title" href="shop.html">Safety Helmet</a>
+                                    <span class="product-item_quantity">1 x $120.00</span>
+                                </div>
+                            </li>
+                            <li class="minicart-product">
+                                <a class="product-item_remove" href="#">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
+  <path fill-rule="evenodd" d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"/>
+</svg></a>
+                                <div class="product-item_img">
+                                    <img class="img-full" src="{% static 'assets/images/product/small-size/1-3-100x103.jpg' %}" alt="Product Image">
+                                </div>
+                                <div class="product-item_content">
+                                    <a class="product-item_title" href="shop.html">Jack Hammer Drill</a>
+                                    <span class="product-item_quantity">1 x $230.00</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="minicart-item_total">
+                        <span>Subtotal</span>
+                        <span class="ammount">$91.05</span>
+                    </div>
+                    <div class="group-btn_wrap d-grid gap-2">
+                        <a href="cart.html" class="btn btn-secondary btn-primary-hover">View Cart</a>
+                        <a href="checkout.html" class="btn btn-secondary btn-primary-hover">Checkout</a>
+                    </div>
+                </div>
+            </div>
+            <div class="global-overlay"></div>
+        </header>
+        <!-- Main Header Area End Here -->
+
+        {% block content %} {% endblock content %}
+
+    </div>
+
+
+    <!-- Begin Footer Area -->
+    <div class="footer-area">
+        <div class="footer-top pt-100 pb-80" data-bg-image="{% static 'tycoonConstruction/assets/images/footer/bg/1-1-1920x454.png' %}">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-3 col-lg-3">
+                        <div class="widget-item text-hawkes-blue">
+                            <div class="footer-logo pb-5">
+                                <a href="#">
+                                    <img src="{% static 'tycoonConstruction\assets\images\logo\header_light_logo.png' %}" alt="Logo">
+                                </a>
+                            </div>
+                            <p class="short-desc font-size-16 mb-5">Construction of itself, because it is are <br> but because some proper style design is occur in toil and pain pleasure</p>
+                            <div class="inquary">
+                                <h5 class="text-primary">For inquary</h5>
+                                <a href="tel://+12345-879-854">+12345 879 854</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-2 col-sm-6 pl-xl-80 pt-8 pt-lg-0">
+                        <div class="widget-item">
+                            <h3 class="heading text-white mb-6">Information</h3>
+                            <ul class="widget-list-item text-hawkes-blue">
+                                <li>
+                                    <a href="#about-us">About us</a>
+                                </li>
+                                <li>
+                                    <a href="#">Our Services</a>
+                                </li>
+                                <li>
+                                    <a href="#">Recent Projects</a>
+                                </li>
+                                <li>
+                                    <a href="#">Our Team</a>
+                                </li>
+                                <li>
+                                    <a href="#">Contact us</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-sm-6 ps-lg-10 pt-8 pt-lg-0">
+                        <div class="widget-item">
+                            <h3 class="heading text-white mb-6">Quick Links</h3>
+                            <ul class="widget-list-item text-hawkes-blue">
+                                <li>
+                                    <a href="#">Support Center</a>
+                                </li>
+                                <li>
+                                    <a href="#">Offers & Promotion</a>
+                                </li>
+                                <li>
+                                    <a href="#">Terms & Conditions</a>
+                                </li>
+                                <li>
+                                    <a href="#">Payment Method</a>
+                                </li>
+                                <li>
+                                    <a href="#">Clients & Reviews</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-4 pt-8 pt-lg-0">
+                        <div class="widget-item">
+                            <h3 class="heading text-white mb-6">Contact Info</h3>
+                            <div class="widget-list-item text-hawkes-blue">
+                                <div class="widget-address pb-5">
+                                    <p class="mb-1">215 Central Road, North Street Central Park,
+                                        <span class="text-primary">New York, USA</span>
+                                    </p>
+                                    <span>+12345 698 745 / +32145 852 785</span>
+                                </div>
+                                <div class="widget-address">
+                                    <p class="mb-1">75, Victoriya Street, New Town Park Road,
+                                        <span class="text-primary">Sydney, Australia</span>
+                                    </p>
+                                    <span>+98745 258 102 / +98745 612 301</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom py-3 text-hawkes-blue" data-bg-color="#00225a">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-4">
+                        <ul class="social-link">
+                            <li class="facebook">
+                                <a href="#" data-tippy="Facebook" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+  <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
+</svg>
+                                </a>
+                            </li>
+                            <li class="twitter">
+                                <a href="#" data-tippy="Twitter" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16">
+  <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
+</svg>
+                                </a>
+                            </li>
+                            <li class="instagram">
+                                <a href="#" data-tippy="Instagram" data-tippy-inertia="true" data-tippy-animation="shift-away" data-tippy-delay="50" data-tippy-arrow="true" data-tippy-theme="sharpborder">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
+  <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/>
+</svg>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 col-sm-8 align-self-center">
+                        <div class="copyright">
+                            <span class="copyright-text">© 2021 Tycoon Construction Made with <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="color: red;" fill="currentColor" class="bi bi-suit-heart" viewBox="0 0 16 16">
+  <path d="m8 6.236-.894-1.789c-.222-.443-.607-1.08-1.152-1.595C5.418 2.345 4.776 2 4 2 2.324 2 1 3.326 1 4.92c0 1.211.554 2.066 1.868 3.37.337.334.721.695 1.146 1.093C5.122 10.423 6.5 11.717 8 13.447c1.5-1.73 2.878-3.024 3.986-4.064.425-.398.81-.76 1.146-1.093C14.446 6.986 15 6.131 15 4.92 15 3.326 13.676 2 12 2c-.777 0-1.418.345-1.954.852-.545.515-.93 1.152-1.152 1.595L8 6.236zm.392 8.292a.513.513 0 0 1-.784 0c-1.601-1.902-3.05-3.262-4.243-4.381C1.3 8.208 0 6.989 0 4.92 0 2.755 1.79 1 4 1c1.6 0 2.719 1.05 3.404 2.008.26.365.458.716.596.992a7.55 7.55 0 0 1 .596-.992C9.281 2.049 10.4 1 12 1c2.21 0 4 1.755 4 3.92 0 2.069-1.3 3.288-3.365 5.227-1.193 1.12-2.642 2.48-4.243 4.38z"/>
+</svg> by <a href="https://hasthemes.com/" rel="noopener" target="_blank">Source Code</a> </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer Area End Here -->
+
+    <!-- Begin Scroll To Top -->
+    <a class="scroll-to-top" href="">
+        <svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" style="color: white;" fill="currentColor" class="bi bi-arrow-up-short" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5z"/>
+            </svg>
+    </a>
+    <!-- Scroll To Top End Here -->
+
+    </div>
+
+    <!-- Global Vendor, plugins JS -->
+
+    <!-- JS Files
+    ============================================ -->
+    <!-- Global Vendor, plugins JS -->
+
+    <!-- Vendor JS -->
+    <script src="{% static 'tycoonConstruction/assets/js/vendor/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'tycoonConstruction/assets/js/vendor/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'tycoonConstruction/assets/js/vendor/jquery-migrate-3.3.2.min.js' %}"></script>
+    <script src="{% static 'tycoonConstruction/assets/js/vendor/modernizr-3.11.2.min.js' %}"></script>
+    <script src="{% static 'tycoonConstruction/assets/js/vendor/jquery.waypoints.js' %}"></script>
+
+    <!--Plugins JS-->
+    <script src="{% static 'tycoonConstruction/assets/js/plugins/wow.min.js' %}"></script>
+    <script src="{% static 'tycoonConstruction/assets/js/plugins/jquery-ui.min.js' %}"></script>
+    <script src="{% static 'tycoonConstruction/assets/js/plugins/tippy.min.js' %}"></script>
+    <script src="{% static 'tycoonConstruction/assets/js/plugins/mailchimp-ajax.js' %}"></script>
+
+    <!-- Plugins & Activation JS For Only This Page -->
+    <script src="{% static 'tycoonConstruction/assets/js/plugins/swiper-bundle.min.js' %}"></script>
+    <script src="{% static 'tycoonConstruction/assets/js/plugins/jquery.counterup.js' %}"></script>
+
+    <!--Main JS (Common Activation Codes)-->
+    <script src="{% static 'tycoonConstruction/assets/js/main.js' %}"></script>
+</body>
+
+</html>

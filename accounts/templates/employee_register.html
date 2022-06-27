@@ -1,0 +1,34 @@
+{% extends 'base.html' %}{% load static from static %} {% load widget_tweaks %} {% block content %}
+
+    <section class="py-140">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 mx-auto">
+              <div class="card">
+                <div class="card-header text-black">
+                  <h2>Register</h2>
+                </div>
+                <div class="card-body">
+                    <form action="{% url 'accounts:employee_register' %}" method="POST" enctype="multipart/form-data" novalidate>
+                      {% csrf_token %}
+                         {% for field in form.visible_fields %}
+                           <div class="form-group">
+                               {{ field.label_tag }}
+                                  {% render_field field class="form-control" %}
+                                    {% for error in field.errors %}
+                                      <span style="color:red">{{ error }}</span>
+                                    {% endfor %}
+                         {% endfor %}
+                         <br>
+                             <input type="submit" value="Register" class="btn btn-block btn-primary mt-2">
+                           </div>
+                    </form>
+                 </div>
+                    </div>   
+                </div>
+              </div>
+            </div>
+        </div>
+      </section>
+
+{% endblock content %}

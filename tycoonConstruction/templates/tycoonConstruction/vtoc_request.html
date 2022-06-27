@@ -1,0 +1,76 @@
+{% extends 'base2.html' %}{% load static from static %} {% load widget_tweaks %} {% block content %}
+
+<div class="m-5 pt-50 pb-10">
+    <h3>Vendor To Contractor Request</h3>
+        <section class="py-80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 mx-auto">
+                        <div class="card">
+                            <div class="card-header text-black"><strong style="color: red;">Request For JOB</strong></div>
+                                <div class="card-body">
+                                    {% if messages %}
+                                        <ul class="messages">
+                                            {% for message in messages %}
+                                            <li  {% if message.tags %} class=" {{ message.tags }} " {% endif %} style="color: green;"> {{ message }} </li>
+                                            {% endfor %}
+                                        </ul>
+                                    {% endif %}
+                                    <form action="" method="POST" enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        {% for field in form.visible_fields %}
+                                        <div class="form-group">
+                                                {{ field.label_tag }}
+                                                {% render_field field class="form-control" %}
+                                                    {% for error in field.errors %}
+                                                        <span style="color:red">{{ error }}</span>
+                                                    {% endfor %}
+                                            {% endfor %}
+                                        <br>
+                                        
+                                            <input type="submit" name="submit" value="submit">
+                                        </div>    
+                                    </form>   
+                                </div>
+                                <hr>
+                                {% comment %} {% if total_meter_wall > total_wall %}
+                                    <p style="color: red;">Deduction can not be increased by Total Meter Wall... <br>
+                                        Try Again </p>
+                                {% else %}
+                                    <h5>Calculated Value</h5>
+                                    {% if submitbutton == "submit" %} 
+                                        <p> length : {{ length }}</p>
+                                        <p> width : {{ width }}</p>
+                                        <p> height : {{ height }} </p>
+                                        <p> no_of_walls : {{ no_of_walls }} <br> 
+                                            total_meter_wall : <span> {{ total_meter_wall }} meter cube (m^3)</span><br>
+                                            Final Value of wall : <span> {{ deduction }} meter cube (m^3)</span>
+                                        </p>
+                                        
+                                        <h5>Brick Estimation & Price </h5>
+                                        <p>Amount of Brick Used : {{ brick_used }}</p>
+                                        <p>Total Price of Brick : {{ total_POB }} Rs</p>
+
+                                        <h5>Cement Estimation & Price </h5>
+                                        <p>Amount of Cement Used : {{ cement_used }} Bags</p>
+                                        <p>Total Price of Cement : {{ cement_price }} Rs</p>
+
+                                        <h5>Sand Estimation & Price </h5>
+                                        <p>Amount of Sand Used : {{ sand_used }} (m^3)</p>
+                                        <p>Total Price of Sand : {{ sand_price }} Rs</p>
+                                    {% endif %}
+                                    {% endcomment %}
+
+                                    {% if submitbutton == "submit" %} 
+                                        <a href="{% url 'tycoonConstruction:contractor_details' %}" class="btn btn-primary">Back To Panel</a>
+                                    {% endif %}
+                                    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <br>
+
+{% endblock content %}

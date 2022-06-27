@@ -1,0 +1,37 @@
+{% extends 'base.html' %}{% load static from static %} {% load widget_tweaks %} {% block content %}
+
+    <section class="py-140">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 mx-auto">
+              <div class="card">
+                <div class="card-header text-black">
+                  <h2>Login</h2>
+                </div>
+                <div class="card-body">
+                    <form action="{% url 'accounts:login' %}" method="POST" novalidate>
+                      {% csrf_token %}
+                         {% for field in form.visible_fields %}
+                           <div class="form-group">
+                               {{ field.label_tag }}
+                                  {% render_field field class="form-control" %}
+                                    {% if messages%}
+                                      {% for message in messages %}
+                                        <span style="color:red">{{ message }}</span>
+                                      {% endfor %}
+                                     {% endif %}
+                         {% endfor %}
+                         <br>
+                         {% if request.GET.next %} <input type="hidden" name="next" value="{{ request.GET.next }}"> {% endif %}
+                             <input type="submit" value="Login" class="btn btn-block btn-primary">
+                           </div>
+                    </form>
+                 </div>
+                    </div>   
+                </div>
+              </div>
+            </div>
+        </div>
+      </section>
+
+{% endblock content %}

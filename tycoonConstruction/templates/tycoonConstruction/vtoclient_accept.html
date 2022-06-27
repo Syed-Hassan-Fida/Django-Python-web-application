@@ -1,0 +1,29 @@
+{% extends 'base2.html' %}{% load static from static %} {% block content %}
+<div class="container">
+    <h1>Please Leave a Message</h1>
+    <hr>
+    <div class="container">
+      <form action="" method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="v_mesg">Message</label>
+          <input type="text" class="form-control" id="v_mesg" name="v_mesg" value="" Required>
+          <label for="">Project Accepted ?</label><br>
+          <input type="radio" id="vehicle1" name="bool" value="True" Required>
+          <label for="vehicle1"> yes</label><br>
+          <input type="radio" id="vehicle2" name="bool" value="False" Required>
+          <label for="vehicle2"> no</label><br>
+        </div>
+        
+          
+          <button type="submit" class="btn btn-primary my-3">Submit</button>
+        
+        
+      </form>
+    </div>
+    
+    
+  </div>
+
+
+{% endblock content %}

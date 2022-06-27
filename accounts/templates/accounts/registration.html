@@ -1,0 +1,9 @@
+{% extends 'base.html' %} {% block content %}
+
+<div style="padding-top: 100px;">
+    <a style="color: black;" href="#">Register as Contractor</a><br>
+    <a style="color: black;" href="#">Register as Vendor</a><br>
+    <a style="color: black;" href="{% url 'accounts:signup' %}">Register as User / Client</a><br>
+</div>
+
+{% endblock content %}

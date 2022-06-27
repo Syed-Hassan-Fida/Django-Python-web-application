@@ -1,0 +1,82 @@
+{% extends 'base.html' %}{% load static from static %} {% load widget_tweaks %} {% block content %}
+
+<div class="m-5 pt-50 pb-30">
+    <h3>Cost Estimation</h3>
+        <section class="py-80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 mx-auto">
+                        <div class="card">
+                            <div class="card-header text-black"><strong>Pillar and Beam Calculation</strong></div>
+                                <div class="card-body">
+                                    <form action="" method="POST">
+                                        {% csrf_token %}
+                                        <h5>RCC Column</h5>
+                                        {% for field in form1.visible_fields %}
+                                        <div class="form-group">
+                                                {{ field.label_tag }}
+                                                {% render_field field class="form-control" %}
+                                                    {% for error in field.errors %}
+                                                        <span style="color:red">{{ error }}</span>
+                                                    {% endfor %}
+                                            {% endfor %}
+                                        <br>
+
+                                        <h5>RCC Beam</h5>
+                                        {% for field in form2.visible_fields %}
+                                        <div class="form-group">
+                                                {{ field.label_tag }}
+                                                {% render_field field class="form-control" %}
+                                                    {% for error in field.errors %}
+                                                        <span style="color:red">{{ error }}</span>
+                                                    {% endfor %}
+                                            {% endfor %}
+                                        <br>
+                                        
+                                        <h5>RCC Slap</h5>
+                                        {% for field in form3.visible_fields %}
+                                        <div class="form-group">
+                                                {{ field.label_tag }}
+                                                {% render_field field class="form-control" %}
+                                                    {% for error in field.errors %}
+                                                        <span style="color:red">{{ error }}</span>
+                                                    {% endfor %}
+                                            {% endfor %}
+                                        <br>
+                                            <input type="submit" name="submit" value="submit">
+                                        </div>    
+                                    </form>   
+                                </div>
+
+                                
+                                <hr>
+                                <br>
+                                <h5>Calculated Value</h5>
+                                {% if submitbutton == "submit" %} 
+                                    <p> total column {{ total_column }} m^3</p>
+                                    <p> total beam {{ total_beam }} m^3</p>
+                                    <p > total slap {{totalslap}} m^3 
+                                    </p>
+                                    <p style="color: green;"> total_Rcc {{ total_Rcc }} m^3</p>
+                                    <p style="color: blue;">total Weight of steel {{ total_steel }} kg</P>
+                                    <p style="color: red;">Total price of steel {{ t_price_of_steel }} Rs</P>   
+
+                                {% endif %}
+
+                                {% if submitbutton == "submit" %} 
+                                    <a href="{% url 'tycoonConstruction:costEstimation' %}" class="btn btn-primary">Back</a>
+                                {% else %}
+                                    <a href="{% url 'tycoonConstruction:walldeduction' %}" class="btn btn-primary">Wall Deduction</a>
+                                    <a href="{% url 'tycoonConstruction:brickwall' %}" class="btn btn-primary">Brick Wall</a>           
+                                {% endif %} 
+                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <br>
+        
+
+{% endblock content %}

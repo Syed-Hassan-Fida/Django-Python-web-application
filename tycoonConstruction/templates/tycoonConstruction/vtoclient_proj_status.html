@@ -1,0 +1,45 @@
+{{vtocli_status.id}}
+{{vtocli_status.projects_id}}
+{{vtocli_status.projects.email}}
+{{vtocli_status.projects.vendor_id}}
+{{vtocli_status.projects.vendor.vendor_email}}
+<style> 
+textarea {
+  width: 30%;
+  height: 70px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  resize: none;
+}
+</style>
+<div class="container">
+    <h1>Send Project Status</h1>
+    <hr>
+    <div class="container">
+      <form action="" method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="start_date">Start Time</label>
+          <input type="date" class="form-control" id="start_date" name="start_date" value="" Required><br>
+          <label for="end_time">end_time </label>
+          <input type="date" class="form-control" id="end_time" name="end_time" value="" Required><br>
+          <label for="proj_status">Start Time</label>
+          <textarea class="form-control" id="proj_status" name="proj_status" value="" Required></textarea><br>
+          <label for="start_date">Start Time</label>
+          <textarea class="form-control" id="material_required" name="material_required" value="" Required></textarea><br>
+          
+        </div>
+        
+          
+          <button type="submit" class="btn btn-primary my-3">Submit</button>
+        
+        
+      </form>
+    </div>
+    
+    
+  </div>

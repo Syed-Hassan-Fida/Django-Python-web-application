@@ -1,0 +1,122 @@
+{% extends 'base2.html' %}{% load static from static %} {% block content %}
+<style>
+img { 
+	transition: all .2s ease-in-out; 
+}
+img:hover { 
+    padding-top: 15px; 
+    	transform: scale(5.0); 
+    }
+</style>
+<main class="p-3">
+                    <h1 class="mt-4">
+                        {%if user.is_vendor%} <span style="color: red;">{{user.username | capfirst }} </span> Vendor Dashboard {% endif %}
+                        {%if user.is_contractor%} <span style="color: red;">{{user.username | capfirst }} </span> Contractor Dashboard {% endif %}
+                            </h1>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item active">Dashboard</li>
+                        </ol>
+                        <div class="row">
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-primary text-white mb-4">
+                                    <div class="card-body">Contractor Details</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small text-white stretched-link" href="{% url 'tycoonConstruction:contractor_details' %}">View Details</a>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-warning text-white mb-4">
+                                    <div class="card-body">Vendor Details</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small text-white stretched-link" href="{% url 'tycoonConstruction:vendor_details' %}">View Details</a>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            {%if user.is_contractor%}
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-success text-white mb-4">
+                                    <div class="card-body">Vendor Requests</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small text-white stretched-link" href="{% url 'tycoonConstruction:vtoc_details' %}">View Details</a>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            {%endif%}
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card bg-danger text-white mb-4">
+                                    <div class="card-body">Accepted Projects</div>
+                                    <div class="card-footer d-flex align-items-center justify-content-between">
+                                        <a class="small text-white stretched-link" href="{% url 'tycoonConstruction:projects_vtocli' %}">View Details</a>
+                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+<h1>Vendor Details</h1>
+
+<div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table me-1"></i>
+                                Registered Vendors
+                            </div>
+                            <div class="card-body">
+                                <table id="datatablesSimple">
+                                    <thead>
+                                        <tr>
+                                            <th>ID#</th>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Address</th>
+                                            <th>Contact No.</th>
+                                            <th>Description</th>
+                                            <th>Experience</th>
+                                            <th>Currently Working</th>
+                                            <th>Image</th>
+                                            {% comment %} <th>Action</th> {% endcomment %}
+                                        </tr>
+                                    </thead>
+                                   
+                                    <tbody>
+                                        {% for i in vendor %}
+                                        <tr>
+                                            <th>{{i.user.id}}</th>
+                                            <th>{{i.user.username}}</th>
+                                            <th><a href = "mailto:{{i.vendor_email}}">{{i.vendor_email}}</a></th>
+                                            <th>{{i.vendor_address}}</th>
+                                            <th><a href = "tel:{{i.vendor_contact}}">{{i.vendor_contact}}</a></th>
+                                            <th>{{i.vendor_description}}</th>
+                                            <th>{{i.year_of_experience}}</th>
+                                            <th>{{i.currently_working}}</th>
+                                            <th><img class=".thumbnail" src="{{i.vendor_Img.url}}" width="50px" height="50" ></th>
+                                            
+                                        </tr>
+                                        {% endfor %}
+                                        
+                                    </tbody>
+
+                                     <tfooter>
+                                        <tr>
+                                            <th>ID#</th>
+                                            <th>Name</th>
+                                            <th>Email</th>
+                                            <th>Address</th>
+                                            <th>Contact No.</th>
+                                            <th>Description</th>
+                                            <th>Experience</th>
+                                            <th>Currently Working</th>
+                                            <th>Image</th>
+                                            {% comment %} <th>Action</th> {% endcomment %}
+                                        </tr>
+                                    </tfooter>
+                                </table>
+                            </div>
+                        </div>
+                    
+                </main>
+
+
+{% endblock content %}
